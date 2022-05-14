@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Add Item!</title>
+	</head>
+	<body>
+		<h1>Enter your item's information</h1>
+		<form action="#" th:action="@{/addItem}" method="POST"
+			th:object="${item}">
+			<p>Name: <input type="text" th:field="*{name}" required></p>
+			<p>Price ($): <input type="number" th:field="*{price}" required></p>
+			<p>Location: <select th:field="*{location}">
+					<option th:each="x : ${locations}"
+					th:value="${x}" th:text="${x}">
+			</select></p>
+			<p><input type="submit" value="Add!"></p>
+			<p><a href="#" th:href="@{/}">Back to home page</a>
+		</form>
+	</body>
+</html>

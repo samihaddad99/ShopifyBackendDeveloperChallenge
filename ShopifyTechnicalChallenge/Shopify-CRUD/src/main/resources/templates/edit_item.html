@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Edit an Item!</title>
+	</head>
+	
+	<body>
+		<h1>Edit your Item</h1>
+		<form action="#" th:action="@{/updateItem}" method="POST" th:object="${item}">
+			<input type="hidden" th:field="*{id}">
+			<p>Name: <input type="text" th:field=*{name} required></p>
+			<p>Price ($): <input type="number" th:field=*{price} required></p>
+			<p>Location: <select th:field="*{location}">
+					<option th:each="x : ${locations}"
+					th:value="${x}" th:text="${x}">
+			</select></p>
+			<p><input type="submit" value="Update!"></p>
+			<p><a href="#" th:href="@{/}">Back to home page</a>
+		</form>
+	</body>
+</html>

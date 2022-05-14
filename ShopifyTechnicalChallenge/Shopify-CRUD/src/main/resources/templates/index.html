@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Items!</title>
+		<link rel="stylesheet" type="text/css" media="all"
+			href="../static/css/styles.css" th:href="@{/css/styles.css}">
+	</head>
+	<body>
+		<h1>Welcome to the Inventory!</h1>
+		<div th:if="${inventory.empty}">
+		<h2>Add an Item to begin!</h2></div>
+		<div th:unless="${inventory.empty}">
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Location</th>
+				</tr>
+				<tr th:each="item : ${inventory}">
+					<td th:text="${item.name}"></td>
+					<td th:text="|$| + ${item.price}"></td>
+					<td th:text="${item.location}"></td>
+					<td><a href="#" th:href="|/editItem/${item.id}|">edit</a></td>
+					<td><a href="#" th:href="|/deleteItem/${item.id}|">delete</a></td>
+				</tr>
+			</table>
+		</div>
+		<p><a href="/addItem">Add an Item</a></p>
+		<p><a href="/addLocation">Add a new Location</a></p>
+		<p><a href="/viewLocations">View Locations</a></p>
+	</body>
+</html>

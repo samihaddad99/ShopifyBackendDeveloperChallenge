@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Add Location!</title>
+		<link rel="stylesheet" type="text/css" media="all"
+			href="../static/css/styles.css" th:href="@{/css/styles.css}">
+	</head>
+	<body>
+		<h1>Viewing all Warehouse Locations</h1>
+		<table>
+			<tr><th>Name</th><tr>
+			<tr th:each="location : ${locations}">
+				<td><label th:for="${location}" th:text="${location.name}"></label></td>
+			</tr>
+		</table> <br>
+		<p><a href="#" th:href="@{/}">Back to home page</a>
+	</body>
+
+</html>
